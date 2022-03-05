@@ -2,6 +2,7 @@ import express, { Response, NextFunction } from "express";
 import Request from "./types/Request";
 import connectDB from "./config/connection";
 import userRouter from "./routes/api/user";
+import restaurantRouter from "./routes/api/restaurant";
 
 const app = express();
 // Connect to MongoDB
@@ -9,13 +10,9 @@ connectDB.then();
 // Main middleware
 app.use(express.json())
 
-// test api
-app.get("/test", (req: Request, res: Response) => {
-  res.send("Well done!");
-});
-
 // Routes
 app.use('/api/user', userRouter)
+app.use('/api/restaurant', restaurantRouter)
 
 
 // No route matched, 404 not found
