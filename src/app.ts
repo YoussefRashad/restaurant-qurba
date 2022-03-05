@@ -1,4 +1,5 @@
-import express from "express";
+import express, { Response, NextFunction } from "express";
+import Request from "./types/Request";
 import connectDB from "./config/connection";
 import userRouter from "./routes/api/user";
 
@@ -9,7 +10,7 @@ connectDB.then();
 app.use(express.json())
 
 // test api
-app.get("/test", (req, res) => {
+app.get("/test", (req: Request, res: Response) => {
   res.send("Well done!");
 });
 
@@ -17,9 +18,8 @@ app.get("/test", (req, res) => {
 app.use('/api/user', userRouter)
 
 
-
 // No route matched, 404 not found
-app.use((req, res, next)=>{
+app.use((req: Request, res: Response, next: NextFunction)=>{
     res.status(404).send(`${req.originalUrl} is not exist`)
 })
 
