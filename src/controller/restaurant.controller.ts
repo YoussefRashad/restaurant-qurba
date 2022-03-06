@@ -12,7 +12,7 @@ export const fetchRestaurant = async (req: Request, res: Response) => {
     })
     .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
@@ -26,7 +26,7 @@ export const getRestaurant = async (req: Request, res: Response) => {
     })
     .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
@@ -40,7 +40,7 @@ export const searchRestaurant = async (req: Request, res: Response) => {
     })
     .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
@@ -55,7 +55,7 @@ export const createRestaurant = async (req: Request, res: Response) => {
     })
     .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
@@ -68,9 +68,9 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     .then((result) => {
       return res.status(HttpStatusCodes.OK).send(result.data);
     })
-    .catch((error) => {
+      .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
@@ -85,7 +85,7 @@ export const deleteRestaurant = async (req: Request, res: Response) => {
     })
     .catch((error) => {
       return res
-        .status(HttpStatusCodes.BAD_REQUEST)
+        .status(error.response.status)
         .send({ error: error.response.data });
     });
 };
