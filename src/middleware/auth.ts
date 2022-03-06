@@ -7,8 +7,7 @@ import Request from "../types/Request";
 
 export default function(req: Request, res: Response, next: NextFunction) {
   // Get token from header
-  const token = req.header('Authorization').replace('Bearer ', '')
-
+  let token = req.header('Authorization')?.replace('Bearer ', '')
   // Check if no token
   if (!token) {
     return res
@@ -18,7 +17,7 @@ export default function(req: Request, res: Response, next: NextFunction) {
   // Verify token
   try {
     const payload: Payload | any = jwt.verify(token, config.jwtSecret);
-    req.user_id = payload.userId;
+    req.user_id = payload._id;
     next();
   } catch (err) {
     res

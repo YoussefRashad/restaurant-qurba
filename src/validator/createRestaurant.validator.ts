@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const createValidator = Joi.object({
+const CreateValidator = Joi.object({
   code: Joi.string().required(),
   name: Joi.string().required(),
   age: Joi.number().required(),
@@ -8,4 +8,4 @@ const createValidator = Joi.object({
   website: Joi.string().required()
 });
 
-export default createValidator;
+export default CreateValidator;
