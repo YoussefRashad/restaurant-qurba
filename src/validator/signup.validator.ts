@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-const signupValidator = Joi.object({
+const SignupValidator = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string()
     .regex(/[a-zA-Z0-9]{6,30}/)
@@ -9,4 +9,4 @@ const signupValidator = Joi.object({
   phoneNumber: Joi.string().required(),
 });
 
-export default signupValidator;
+export default SignupValidator;

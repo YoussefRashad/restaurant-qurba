@@ -3,6 +3,7 @@ import validator from "validator";
 import jwt from "jsonwebtoken";
 import config from "../config/default";
 import bcrypt from "bcrypt";
+import Messages from "../config/Messages";
 
 export interface IUser extends Document {
   email: string;
@@ -17,10 +18,10 @@ const userSchema = new Schema(
   {
     email: {
       type: String,
-      required: [true, "email is required!"],
+      required: [true, Messages.user.error.EMAIL_REQUIRED],
       validate(val: string) {
         if (!validator.isEmail(val)) {
-          throw new Error("email is not valid!");
+          throw new Error(Messages.user.error.EMAIL_VALID);
         }
       },
       unique: true,
@@ -28,18 +29,19 @@ const userSchema = new Schema(
     },
     username: {
       type: String,
-      required: [true, "username is required!"],
+      required: [true, Messages.user.error.USERNAME_REQUIRED],
       trim: true,
     },
     password: {
       type: String,
-      required: [true, "password is required!"],
+      required: [true, Messages.user.error.PASSWORD_REQUIRED],
       minlength: 6,
     },
     phoneNumber: {
       type: String,
-      required: [true, "phone number is required!"],
+      required: [true, Messages.user.error.PHONE_REQUIRED],
       trim: true,
+      unique: true,
     },
     tokens: [{
         token: {
@@ -79,11 +81,11 @@ export const FindByCredentials = async (
 ) => {
   const user = await userModel.findOne({ email });
   if (!user) {
-    throw new Error("Unable to login!");
+    throw new Error(Messages.user.error.INCORRECT_CREDENTIALS);
   }
   const isMatched = await bcrypt.compare(password, user.password);
   if (!isMatched) {
-    throw new Error("Unable to login ... password is incorrect!");
+    throw new Error(Messages.user.error.INCORRECT_CREDENTIALS);
   }
   return user;
 };
