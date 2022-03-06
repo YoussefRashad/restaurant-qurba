@@ -4,6 +4,12 @@ import axios from "axios";
 import HttpStatusCodes from "http-status-codes";
 import Config from "../config/default";
 
+/**
+ * get all restaurants
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const fetchRestaurant = async (req: Request, res: Response) => {
   axios
     .get(`${Config.restaurant_service_url}/fetch`)
@@ -16,6 +22,12 @@ export const fetchRestaurant = async (req: Request, res: Response) => {
         .send({ error: error.response.data });
     });
 };
+/**
+ * get restaurant by code
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const getRestaurant = async (req: Request, res: Response) => {
   axios
     .post(`${Config.restaurant_service_url}/get`, {
@@ -30,6 +42,12 @@ export const getRestaurant = async (req: Request, res: Response) => {
         .send({ error: error.response.data });
     });
 };
+/**
+ * search for restaurant by (name/age/code/location)
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const searchRestaurant = async (req: Request, res: Response) => {
   axios
     .post(`${Config.restaurant_service_url}/search`, {
@@ -44,6 +62,12 @@ export const searchRestaurant = async (req: Request, res: Response) => {
         .send({ error: error.response.data });
     });
 };
+/**
+ * 
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const createRestaurant = async (req: Request, res: Response) => {
   axios
     .post(`${Config.restaurant_service_url}/create`, {
@@ -59,6 +83,12 @@ export const createRestaurant = async (req: Request, res: Response) => {
         .send({ error: error.response.data });
     });
 };
+/**
+ * update restaurant by code
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const updateRestaurant = async (req: Request, res: Response) => {
   axios
     .put(`${Config.restaurant_service_url}/update`, {
@@ -74,6 +104,12 @@ export const updateRestaurant = async (req: Request, res: Response) => {
         .send({ error: error.response.data });
     });
 };
+/**
+ * delete restaurant by code
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const deleteRestaurant = async (req: Request, res: Response) => {
   axios
     .post(`${Config.restaurant_service_url}/delete`, {
