@@ -13,7 +13,7 @@ export const fetchRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };
 export const getRestaurant = async (req: Request, res: Response) => {
@@ -27,7 +27,7 @@ export const getRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };
 export const searchRestaurant = async (req: Request, res: Response) => {
@@ -41,7 +41,7 @@ export const searchRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };
 export const createRestaurant = async (req: Request, res: Response) => {
@@ -56,7 +56,7 @@ export const createRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };
 export const updateRestaurant = async (req: Request, res: Response) => {
@@ -71,7 +71,7 @@ export const updateRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };
 export const deleteRestaurant = async (req: Request, res: Response) => {
@@ -86,6 +86,6 @@ export const deleteRestaurant = async (req: Request, res: Response) => {
     .catch((error) => {
       return res
         .status(HttpStatusCodes.BAD_REQUEST)
-        .send({ error: error.message });
+        .send({ error: error.response.data });
     });
 };

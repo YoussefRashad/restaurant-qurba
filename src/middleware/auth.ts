@@ -1,6 +1,7 @@
 import { Response, NextFunction } from "express";
 import HttpStatusCodes from "http-status-codes";
 import jwt from "jsonwebtoken";
+import Messages from "../config/Messages";
 import config from "../config/default";
 import Payload from "../types/Payload";
 import Request from "../types/Request";
@@ -12,7 +13,7 @@ export default function(req: Request, res: Response, next: NextFunction) {
   if (!token) {
     return res
       .status(HttpStatusCodes.UNAUTHORIZED)
-      .json({ msg: "No token, authorization denied" });
+      .json({ msg: Messages.user.error.INVALIDED_TOKEN });
   }
   // Verify token
   try {
