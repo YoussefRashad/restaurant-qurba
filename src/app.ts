@@ -1,6 +1,7 @@
 import express, { Response, NextFunction } from "express";
 import Request from "./types/Request";
 import connectDB from "./config/connection";
+import HttpStatusCodes from "http-status-codes";
 import userRouter from "./routes/api/user";
 import restaurantRouter from "./routes/api/restaurant";
 
@@ -17,7 +18,7 @@ app.use('/api/restaurant', restaurantRouter)
 
 // No route matched, 404 not found
 app.use((req: Request, res: Response, next: NextFunction)=>{
-    res.status(404).send(`${req.originalUrl} is not exist`)
+    res.status(HttpStatusCodes.BAD_REQUEST).send(`${req.originalUrl} is not exist`)
 })
 
 
