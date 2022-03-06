@@ -18,7 +18,7 @@ export default function(req: Request, res: Response, next: NextFunction) {
   // Verify token
   try {
     const payload: Payload | any = jwt.verify(token, config.jwtSecret);
-    req.userId = payload.userId;
+    req.user_id = payload.userId;
     next();
   } catch (err) {
     res
