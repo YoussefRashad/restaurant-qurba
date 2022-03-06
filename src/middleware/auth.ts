@@ -13,7 +13,7 @@ export default function(req: Request, res: Response, next: NextFunction) {
   if (!token) {
     return res
       .status(HttpStatusCodes.UNAUTHORIZED)
-      .json({ msg: Messages.user.error.INVALIDED_TOKEN });
+      .json({ msg: Messages.user.error.UNAUTHORIZED_TOKEN });
   }
   // Verify token
   try {
@@ -23,6 +23,6 @@ export default function(req: Request, res: Response, next: NextFunction) {
   } catch (err) {
     res
       .status(HttpStatusCodes.UNAUTHORIZED)
-      .json({ msg: "Token is not valid" });
+      .json({ msg: Messages.user.error.INVALIDED_TOKEN });
   }
 }

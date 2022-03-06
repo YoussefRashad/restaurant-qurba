@@ -7,7 +7,8 @@ export default {
       EMAIL_VALID: 'Email is not valid',
       USERNAME_REQUIRED: 'Username is required',
       PASSWORD_REQUIRED: 'Password is required',
-      INVALIDED_TOKEN: "No token, authorization denied"
+      UNAUTHORIZED_TOKEN: "No token, authorization denied",
+      INVALIDED_TOKEN: "No token, authorization denied",
     },
   },
 }
